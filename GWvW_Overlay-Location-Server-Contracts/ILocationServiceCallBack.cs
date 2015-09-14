@@ -7,7 +7,7 @@ namespace GWvW_Overlay_Location_Server_Contracts
 {
     public interface ILocationServiceCallBack
     {
-        [OperationContract()]
-        Task ReceivePositions(List<Position> positions);
+        [OperationContract(IsOneWay = true)]
+        void ReceivePositions(List<Position> positions);
     }
 }
