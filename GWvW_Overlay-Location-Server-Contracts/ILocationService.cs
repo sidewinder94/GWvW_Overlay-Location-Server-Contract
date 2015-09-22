@@ -7,12 +7,14 @@ namespace GWvW_Overlay_Location_Server_Contracts
     public interface ILocationService
     {
         [OperationContract()]
+        [FaultContract(typeof(LocationServiceFault))]
         Guid SubscribeClient(Client newClient);
 
         [OperationContract(IsOneWay = true)]
         void SendPosition(Guid clientId, Position position);
 
         [OperationContract]
+        [FaultContract(typeof(LocationServiceFault))]
         bool ValidateAPIKey(String apiKey);
 
         [OperationContract(IsOneWay = true)]

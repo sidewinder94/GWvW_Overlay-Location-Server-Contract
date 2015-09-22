@@ -38,5 +38,24 @@ namespace GWvW_Overlay_Location_Server_Contracts
         [DataMember(IsRequired = true)]
         public int MapId;
 
+        public Boolean Undefined()
+        {
+            return X == 0 && Y == 0 && MapId == 0;
+        }
+
     }
+
+
+    [DataContract]
+    public class LocationServiceFault
+    {
+        public LocationServiceFault(string message)
+        {
+            Message = message;
+        }
+
+        [DataMember]
+        public string Message { get; set; }
+    }
+
 }
