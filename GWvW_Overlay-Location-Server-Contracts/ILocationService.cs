@@ -6,19 +6,16 @@ namespace GWvW_Overlay_Location_Server_Contracts
     [ServiceContract(CallbackContract = typeof(ILocationServiceCallBack))]
     public interface ILocationService
     {
-        [OperationContract(IsInitiating = true,
-                           IsTerminating = false)]
+        [OperationContract()]
         Guid SubscribeClient(Client newClient);
 
-        [OperationContract(IsInitiating = false,
-                           IsTerminating = false,
-                           IsOneWay = true)]
+        [OperationContract(IsOneWay = true)]
         void SendPosition(Guid clientId, Position position);
 
+        [OperationContract]
+        bool ValidateAPIKey(String apiKey);
 
-        [OperationContract(IsTerminating = true,
-                           IsInitiating = false,
-                           IsOneWay = true)]
+        [OperationContract(IsOneWay = true)]
         void UnsubscribeClient(Guid clientId);
     }
 }

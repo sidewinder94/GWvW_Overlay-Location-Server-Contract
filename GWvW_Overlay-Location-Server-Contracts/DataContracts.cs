@@ -33,7 +33,7 @@ namespace GWvW_Overlay_Location_Server_Contracts
     public class Position
     {
         [DataMember(IsRequired = true)]
-        public int X, Y;
+        public double X, Y;
 
         [DataMember(IsRequired = true)]
         public int MapId;
